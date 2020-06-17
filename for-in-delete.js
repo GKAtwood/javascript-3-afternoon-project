@@ -7,8 +7,10 @@
 */
 
 /*
-  First we'll look at the difference between accessing property values in a for in loop and accessing the property name in a for in loop.
-  In the example below, we are accessing the property values. Uncomment the code below, run it and look at what prints in the console.
+  First we'll look at the difference between accessing property values in a for in loop and accessing the
+   property name in a for in loop.
+  In the example below, we are accessing the property values. Uncomment the code below, run it and look
+   at what prints in the console.
 */
 
 var values = {
@@ -27,18 +29,22 @@ for(var key in values) {
   In this next example, we are accessing the property names themselves. Uncomment the code below, run it and look at what prints in the console.
 */
 
-for(var key in values) {
-  console.log(key)
-}
-
 
 
 ////////// PROBLEM 1 //////////
 
 /*
   Inside the function showValues, write a for in loop that concatenates each of the property values 
-  and returns the concatenated string.
+  and returns the concatnated string
 */
+
+function showValues(obj){
+  let newValues = [];
+  for (let key in obj){
+    newValues.push(obj[key]);
+  }
+  return newValues.join('')
+}
 
 
 
@@ -50,11 +56,14 @@ for(var key in values) {
   Return the updated object.
 */
 
-// function greaterThan10({ a: 1, b: 2, c: 3 });
-// for (const property in object) {
-//   console.log(`${property}: ${object[property]}`);
-// }
-
+function greaterThan10 (obj){
+  for(let key in obj){
+    if(obj[key] > 10){
+      obj[key] = 0
+    }
+  }
+  return obj
+}
 
 
 
@@ -66,12 +75,12 @@ for(var key in values) {
   Return the updated object.
 */
 
-function double(obj){
-  for(let key in obj)
- 
-  return obj
-  }
-  
+function double(obj) {
+ for(let key in obj){
+     (obj[key] *= 2)
+ }
+ return obj
+}
 
 
 
@@ -84,10 +93,19 @@ function double(obj){
   If the property name starts with an 'sh', concatenate the value to the string variable.
   By the end of the for in loop, you should have a sentence, return that sentence.
 */
-function secrets(obj){
-  let emtStr = ''
-  
-}
+
+function secrets (obj){
+  let empStr = '';
+  console.log(obj)
+  for(let key in obj){
+    if(key.substring(0, 2) === `sh`) {
+      empStr += obj[key];
+
+    }
+
+    }
+    return empStr
+  }
 
 
 /* 
@@ -159,10 +177,18 @@ for(var key in deleteTheBigNumbers) {
 */
 
 function startsWithK(obj){
-  for(let  key in obj)
-  delete obj[key].k
+
+  for(let key in obj){
+    if(key.substring(0,1) === 'k'){
+      delete obj[key]
+      
+
+    }
+  }
   return obj
+
 }
+
 
 
 ////////// PROBLEM 8 //////////
@@ -176,12 +202,16 @@ function startsWithK(obj){
   (hint: the method includes() may be of use...)
 */
 
-function hiddenTreasure (obj){
-  for(let key in obj)
-  if (obj !== 'treasure'){
+function hiddenTreasure(obj){
 
+  for(let key in obj){
+    if(!obj[key].includes('treasure')){
+     delete obj[key]
+     }
   }
- 
+  return obj
+
 }
+
 
 
